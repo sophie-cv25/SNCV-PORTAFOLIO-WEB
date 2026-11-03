@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const enlaces = document.querySelectorAll(".navbar__link");
+    const enlaces = document.querySelectorAll(".navbar__link, .navbar__brand");
 
     const secciones = document.querySelectorAll("section[id]");
 
