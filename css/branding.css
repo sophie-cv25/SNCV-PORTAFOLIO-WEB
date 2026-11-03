@@ -1,337 +1,217 @@
 /* =========================================
-   PÁGINA DE BRANDING
+   SCROLL HORIZONTAL & SLIDER DE PROYECTOS
 ========================================= */
-
-/* Estructura general de la página */
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Evita el scroll vertical */
-}
-
-.branding {
-    width: 100%;
+html, body {
+    overflow: hidden; /* Evita scrolls dobles fuera del contenedor */
     height: 100vh;
-    overflow: hidden;
-    background-color: #f7f7f7;
+    background-color: #EBEBEB;
 }
 
-/* =========================================
-   CONTENEDOR PRINCIPAL & SCROLL HORIZONTAL
-========================================= */
-
-.branding__contenedor {
+.branding-container {
     display: flex;
     width: 100vw;
     height: 100vh;
-
-    overflow-x: auto; /* Muestra la barra de scroll horizontal */
+    overflow-x: auto;
     overflow-y: hidden;
-
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory; /* Snap magnético horizontal */
     scroll-behavior: smooth;
-
-    /* Scrollbar estilizada para Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(16, 1, 3, 0.4) rgba(16, 1, 3, 0.08);
-    
 }
 
-/* Scrollbar estilizada para Chrome, Safari y Edge */
-.branding__contenedor::-webkit-scrollbar {
-    display: block;
-    height: 8px; /* Altura de la barra horizontal inferior */
-}
-
-.branding__contenedor::-webkit-scrollbar-track {
-    background: rgba(16, 1, 3, 0.05);
-}
-
-.branding__contenedor::-webkit-scrollbar-thumb {
-    background-color: var(--Fuccsia-intenso, #FF0051);
-    border-radius: 4px;
-}
-
-/* =========================================
-   SECCIONES DE PROYECTOS
-========================================= */
-
-.branding__proyecto {
+.proyecto-branding {
     flex: 0 0 100vw;
     width: 100vw;
-    min-width: 100vw;
     height: 100vh;
-    box-sizing: border-box;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 100px 60px 40px;
-
+    overflow-y: auto; /* Scroll vertical interno dentro de cada proyecto */
     scroll-snap-align: start;
+    box-sizing: border-box;
+    padding-top: 80px; /* Despeje para el navbar fijo */
 }
 
-/* =========================================
-   INFORMACIÓN DEL PROYECTO
-========================================= */
-
-.branding__info {
-    width: 35%;
-    margin-left: 40px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-}
-
-/* LOGO */
-.branding__logo {
+/* Restricción de ancho para mantener centrado el contenido */
+.proyecto-branding__contenido {
     width: 100%;
-}
-
-.branding__logo img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-/* DESCRIPCIÓN */
-.branding__descripcion {
-    width: 100%;
-}
-
-/* =========================================
-   CARRUSEL & IMÁGENES
-========================================= */
-
-.branding__carrusel {
-    width: min(530px, 55%);
-    margin-right: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Espacio vertical entre las imágenes y los puntos */
-    flex-shrink: 0;
-    overflow: visible; /* Asegura que la animación de los circulitos no se recorte */
+    padding-bottom: 80px;
 }
 
-.branding__carrusel-imagenes {
-    position: relative;
+/* =========================================
+   PANTALLA HERO (PRIMEROS 100VH)
+========================================= */
+.proyecto-hero {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
-    overflow: hidden; /* Recorta únicamente el cambio de imágenes */
+    min-height: calc(100vh - 80px); /* Ocupa exactamente la primera pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra y agrupa armoniosamente */
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+    padding: 20px 40px;
 }
 
-.branding__carrusel-imagenes img {
-    position: absolute;
-    inset: 0;
+/* =========================================
+   1. SNACKY (DESKTOP)
+========================================= */
+.snacky-logo {
+    width: 686px;
+    height: 232.983px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.snacky-logo img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
-    object-position: center;
-
-    transform: translateX(100%);
-    transition: transform 0.4s ease-in-out;
-
-    visibility: hidden;
 }
 
-/* IMAGEN VISIBLE */
-.branding__carrusel-imagenes img.activa {
-    transform: translateX(0);
-    visibility: visible;
-    z-index: 2;
+.proyecto-branding__intro {
+    max-width: 900px;
+    text-align: center;
+    margin: 0;
 }
 
-/* IMAGEN QUE SALE HACIA LA IZQUIERDA */
-.branding__carrusel-imagenes img.saliendo {
-    transform: translateX(-100%);
-    visibility: visible;
-    z-index: 1;
+/* Contenedor de 3 SVGs / Imágenes */
+.branding__svgs-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 77px;
+    width: 100%;
 }
 
-/* =========================================
-   INDICADORES / PUNTOS DEBAJO DE LA IMAGEN
-========================================= */
-
-.branding__indicadores {
+/* Reducido para que queden sutiles y no gigantes */
+.branding__svgs-flex .svg-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 8px 0; /* Padding suficiente para que no se corten los bordes al agrandarse */
+    height: 45px; /* Tamaño compacto */
+}
+
+.branding__svgs-flex .svg-item img,
+.branding__svgs-flex .svg-item svg {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Imagen con 15px de padding lateral */
+.branding__imagen-full {
     width: 100%;
-    z-index: 10;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-top: 40px;
+    margin-bottom: 80px;
 }
 
-.branding__punto {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background-color: rgba(190, 187, 187, 0.863);
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    flex-shrink: 0;
+.branding__imagen-full img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
-.branding__punto--activo {
-    background-color: rgb(66, 64, 64);
-    transform: scale(1.3);
-}
-/* =========================================
-   ADAPTATIVO / RESPONSIVE (TABLETS / iPADS: 769px - 1024px)
-========================================= */
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-
-    /* 1. CONTENEDOR DE SECCIÓN CON MÁRGENES Y ESPACIADO CONTROLADOS */
-    .branding__proyecto {
-        padding: 90px 40px 30px;
-        gap: 30px;
-    }
-
-    /* 2. INFORMACIÓN A LA IZQUIERDA */
-    .branding__info {
-        width: 42%;
-        margin-left: 0;
-        gap: 20px;
-    }
-
-    /* Logo más pequeño y proporcional */
-    .branding__logo {
-        width: 100%;
-        max-width: 220px;
-    }
-
-    .branding__descripcion {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    /* 3. CARRUSEL A LA DERECHA (MÁS CHICO) */
-    .branding__carrusel {
-        width: 45%;
-        max-width: 380px;
-        margin-right: 0;
-        gap: 12px;
-    }
-
-    .branding__indicadores {
-        gap: 8px;
-        padding: 4px 0;
-    }
-
-    .branding__punto {
-        width: 6px;
-        height: 6px;
-    }
+/* Bloque de Solución Gráfica */
+/* Bloque de Solución Gráfica */
+.branding__solucion-bloque {
+    display: flex;
+    align-items: center; /* Alinea texto e imagen perfectamente al centro vertical */
+    justify-content: space-between;
+    gap: 130px; /* Mantiene tu espacio exacto de 130px */
+    width: calc(100% - 30px);
+    max-width: 1200px;
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
+.solucion-bloque__texto {
+    flex: 1;
+}
+
+.solucion-bloque__texto h3 {
+    margin-bottom: 20px;
+}
+
+/* Imagen de solución gráfica más pequeña */
+.solucion-bloque__imagen {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 450px; /* Controla qué tan chica se ve la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.solucion-bloque__imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
 
 /* =========================================
-   ADAPTATIVO / RESPONSIVE (CELULARES / MÓVILES: Hasta 768px)
+   2. MEDIA PARTNERS (DESKTOP)
 ========================================= */
+.media-logo {
+    width: 100%;
+    height: 264.57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-@media screen and (max-width: 768px) {
+.media-logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
 
-    /* Habilitar scroll vertical en pantalla táctil */
-    body, html, .branding {
-        overflow-x: hidden;
-        overflow-y: auto;
+.branding__svg-centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+/* =========================================
+   BURBUJA DE GUÍA DE NAVEGACIÓN
+========================================= */
+.burbuja-guia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: rgba(16, 1, 3, 0.05); /* Fondo traslúcido suave */
+    border: 1px solid rgba(16, 1, 3, 0.12);  /* Borde tenue */
+    padding: 10px 22px;
+    border-radius: 50px;                    /* Formato de píldora */
+    margin-top: 15px;
+    
+    /* Hereda la tipografía exacta de tus párrafos <p> */
+    font-family: outfit, sans-serif;
+    font-size: 14px;
+    color: var(--Negro-Vino, #100103);
+    letter-spacing: normal;
+    
+    backdrop-filter: blur(4px);
+    animation: flotarBurbuja 3s ease-in-out infinite;
+}
+
+.burbuja-guia__separador {
+    color: var(--Fuccsia-intenso, #FF0051); /* Detalle de color fucsia */
+    font-weight: bold;
+}
+
+/* Animación sutil de levitación vertical */
+@keyframes flotarBurbuja {
+    0%, 100% {
+        transform: translateY(0);
     }
-
-    .branding__contenedor {
-        flex-direction: column;
-        width: 100vw;
-        height: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
-        scroll-snap-type: none;
-    }
-
-    /* 1. DISPOSICIÓN VERTICAL COMPLETA */
-    .branding__proyecto {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        min-width: 100vw;
-        height: auto;
-        min-height: 100vh;
-        padding: 85px 20px 40px;
-        gap: 20px;
-        text-align: center !important;
-        box-sizing: border-box;
-    }
-
-    /* 2. BLOQUE DE INFORMACIÓN EN EL CENTRO (ARRIBA DEL CARRUSEL) */
-    .branding__info {
-        order: 1 !important;
-        width: 100%;
-        max-width: 340px;
-        margin-left: 0 !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center !important;
-        justify-content: center;
-        text-align: center !important;
-        gap: 14px;
-    }
-
-    /* Logo en el centro más pequeño */
-    .branding__logo {
-        width: 100%;
-        max-width: 170px;
-        margin: 0 auto;
-    }
-
-    .branding__logo img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
-
-    /* Texto de descripción centrado */
-    .branding__descripcion {
-        width: 100%;
-        font-size: 13.5px;
-        line-height: 1.5;
-        color: var(--Negro-Vino, #100103);
-        text-align: center !important;
-        margin: 0;
-    }
-
-    /* 3. CARRUSEL ABAJO DEL TODO (COMPACTO) */
-    .branding__carrusel {
-        order: 2 !important;
-        width: 100%;
-        max-width: 250px;
-        margin-right: 0 !important;
-        margin-top: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .branding__carrusel-imagenes {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-    }
-
-    /* Indicadores reducidos */
-    .branding__indicadores {
-        gap: 8px;
-        padding: 4px 0;
-    }
-
-    .branding__punto {
-        width: 6px;
-        height: 6px;
+    50% {
+        transform: translateY(-6px);
     }
 }
