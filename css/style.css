@@ -644,6 +644,10 @@ p {
     .hero__name {
         display: block;
     }
+    /* ICONO DE FONDO EN RESPONSIVE */
+    .background-icon {
+        margin-left: -300px; /* Desplaza el icono 300px hacia la izquierda */
+    }
 
     .hero__icon {
         padding-right: 0 !important;
@@ -653,6 +657,7 @@ p {
         align-items: center;
         width: 100%;
         pointer-events: none;
+
     }
 
     .hero__icon img {
@@ -706,12 +711,12 @@ p {
 
     .img_trabajos {
         top: -200px;
-        right: -200px;
+        right: -80px;
         opacity: 0.5;
     }
 
     .img_trabajos img {
-        height: 450px;
+        height: 850px;
         width: auto;
         opacity: 0.5;
     }
