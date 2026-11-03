@@ -1,0 +1,364 @@
+/* =========================================
+   PÁGINA DISEÑO 3D — ESTILOS GLOBALES & UNIFICADOS
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+    --Negro-Vino: #100103;
+    --Hueso: #D9D9D9;
+    --Fuccsia-intenso: #FF0051;
+    --Amarillo-mostaza: #FFB400;
+}
+
+/* RESETEO Y CONTENCIÓN PANTALLA COMPLETA */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--Hueso, #D9D9D9);
+    font-family: "Outfit", sans-serif;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL CON SCROLL HORIZONTAL
+========================================= */
+
+/* =========================================
+   CONTENEDOR PRINCIPAL CON SCROLL HORIZONTAL
+========================================= */
+
+.diseno3d {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.diseno3d__proyectos {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    /* Scrollbar estilizada para Firefox (Igual a ux_ui) */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 1, 3, 0.4) rgba(16, 1, 3, 0.08);
+}
+
+/* Scrollbar estilizada para Chrome, Safari y Edge (Igual a ux_ui) */
+.diseno3d__proyectos::-webkit-scrollbar {
+    display: block;
+    height: 8px;
+}
+
+.diseno3d__proyectos::-webkit-scrollbar-track {
+    background: rgba(16, 1, 3, 0.08);
+}
+
+.diseno3d__proyectos::-webkit-scrollbar-thumb {
+    background-color: rgba(16, 1, 3, 0.4);
+    border-radius: 4px;
+}
+
+/* =========================================
+   SECCIONES EN PANTALLA COMPLETA (SLIDES)
+========================================= */
+
+.diseno3d__proyecto {
+    flex: 0 0 100vw;
+    width: 100vw;
+    min-width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 90px 8% 40px;
+    gap: 60px;
+}
+
+/* =========================================
+   INFORMACIÓN DE PROYECTOS (ESCRITORIO)
+========================================= */
+
+.diseno3d__info {
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.diseno3d__titulo {
+    margin: 0;
+    font-family: "Chillax", sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 500;
+    color: var(--Negro-Vino, #100103);
+}
+
+.diseno3d__descripcion {
+    width: 100%;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--Negro-Vino, #100103);
+}
+
+/* DISTRIBUCIÓN ALTERNADA EN ESCRITORIO */
+.diseno3d__proyecto--kera .diseno3d__info { order: 1; }
+.diseno3d__proyecto--kera .diseno3d__visual { order: 2; }
+
+.diseno3d__proyecto--champ .diseno3d__visual { order: 1; }
+.diseno3d__proyecto--champ .diseno3d__info { order: 2; }
+
+/* =========================================
+   ÁREA VISUAL Y GALERÍA 3D
+========================================= */
+
+.diseno3d__visual {
+    width: 45%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.diseno3d__galeria {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+/* DIAPOSITIVAS */
+.diseno3d__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    overflow: hidden;
+}
+
+.diseno3d__slide--activo {
+    display: block;
+}
+
+.diseno3d__slide model-viewer,
+.diseno3d__slide img,
+.diseno3d__slide video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background-color: transparent;
+}
+
+/* =========================================
+   CONTROLES DE GALERÍA (FLECHAS MÁS CHICAS Y UNIFICADAS)
+========================================= */
+
+.diseno3d__controles {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important; /* Separación compacta */
+    margin-top: 8px;
+}
+
+/* BOTONES FLECHA UNIFICADOS Y LIMPIOS */
+.diseno3d__flecha {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    line-height: 1 !important;
+    color: var(--Negro-Vino, #100103);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.diseno3d__flecha:hover {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+/* TAMAÑO REDUCIDO DE LOS SVG (MÁS CHICOS) */
+.diseno3d__flecha img,
+.diseno3d__flecha svg {
+    display: block !important;
+    width: 14px !important;  /* Reducido a 14px para un aspecto más chico y elegante */
+    height: 14px !important;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* INDICADORES (PUNTOS) */
+.diseno3d__indicadores {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+}
+
+.diseno3d__punto {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: rgba(190, 187, 187, 0.863);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.diseno3d__punto--activo {
+    background-color: rgb(66, 64, 64);
+    transform: scale(1.2);
+}
+
+/* INDICADORES (CIRCULITOS) */
+.diseno3d__indicadores {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.diseno3d__punto {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(190, 187, 187, 0.863);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.diseno3d__punto--activo {
+    background-color: rgb(66, 64, 64);
+    transform: scale(1.2);
+}
+
+/* =========================================
+   BURBUJA DE AYUDA
+========================================= */
+
+.diseno3d__ayuda {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 140px;
+    height: 140px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.65);
+    color: var(--Negro-Vino, #100103);
+    font-family: "Outfit", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+    text-align: center;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* =========================================
+   ADAPTATIVO / RESPONSIVE (CELULAR Y TABLET)
+========================================= */
+
+@media screen and (max-width: 768px) {
+    /* Permitir scroll vertical en celular si el contenido sobrepasa la pantalla */
+    body, html, .diseno3d {
+        overflow: auto;
+    }
+
+    .diseno3d__proyectos {
+        flex-direction: column;
+        width: 100vw;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-snap-type: none;
+    }
+
+    /* CONTENEDOR CENTRADO Y ORDEN DE ELEMENTOS */
+    .diseno3d__proyecto {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        min-width: 100vw;
+        height: auto;
+        min-height: 100vh;
+        padding: 80px 20px 50px;
+        gap: 24px;
+        text-align: center !important;
+    }
+
+    /* 1. MODELOS / ÁREA VISUAL ARRIBA DEL TODO */
+    .diseno3d__visual {
+        order: 1 !important;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .diseno3d__galeria {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* 2. NOMBRE Y 3. DESCRIPCIÓN ABAJO DEL MODELO */
+    .diseno3d__info {
+        order: 2 !important;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 12px;
+    }
+
+    /* Nombre del modelo */
+    .diseno3d__titulo {
+        font-size: clamp(32px, 8vw, 44px);
+        text-align: center !important;
+    }
+
+    /* Descripción abajo del nombre */
+    .diseno3d__descripcion {
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 90%;
+        text-align: center !important;
+    }
+
+    /* Ocultar burbuja flotante en pantallas pequeñas */
+    .diseno3d__ayuda {
+        display: none;
+    }
+}
