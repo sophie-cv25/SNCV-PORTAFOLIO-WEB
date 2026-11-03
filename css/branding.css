@@ -1,10 +1,9 @@
 /* =========================================
-   SCROLL HORIZONTAL & SLIDER DE PROYECTOS
+   1. ESTRUCTURA GLOBAL Y SCROLL HORIZONTAL
 ========================================= */
 html, body {
     overflow: hidden; /* Evita scrolls dobles fuera del contenedor */
     height: 100vh;
-    background-color: #EBEBEB;
 }
 
 .branding-container {
@@ -37,7 +36,7 @@ html, body {
 }
 
 /* =========================================
-   PANTALLA HERO (PRIMEROS 100VH)
+   2. PANTALLA HERO (PRIMEROS 100VH)
 ========================================= */
 .proyecto-hero {
     width: 100%;
@@ -52,7 +51,7 @@ html, body {
 }
 
 /* =========================================
-   1. SNACKY (DESKTOP)
+   3. SNACKY (DESKTOP)
 ========================================= */
 .snacky-logo {
     width: 686px;
@@ -84,12 +83,11 @@ html, body {
     width: 100%;
 }
 
-/* Reducido para que queden sutiles y no gigantes */
 .branding__svgs-flex .svg-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45px; /* Tamaño compacto */
+    height: 45px; /* Tamaño compacto y sutil */
 }
 
 .branding__svgs-flex .svg-item img,
@@ -117,12 +115,11 @@ html, body {
 }
 
 /* Bloque de Solución Gráfica */
-/* Bloque de Solución Gráfica */
 .branding__solucion-bloque {
     display: flex;
-    align-items: center; /* Alinea texto e imagen perfectamente al centro vertical */
+    align-items: center; /* Centra texto e imagen en el eje vertical */
     justify-content: space-between;
-    gap: 130px; /* Mantiene tu espacio exacto de 130px */
+    gap: 130px; /* Espacio de 130px entre texto e imagen */
     width: calc(100% - 30px);
     max-width: 1200px;
     padding: 0 15px;
@@ -137,11 +134,10 @@ html, body {
     margin-bottom: 20px;
 }
 
-/* Imagen de solución gráfica más pequeña */
 .solucion-bloque__imagen {
     flex: 0 0 auto;
     width: 100%;
-    max-width: 450px; /* Controla qué tan chica se ve la imagen */
+    max-width: 450px; /* Tamaño reducido y controlado para la imagen */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,19 +151,20 @@ html, body {
 }
 
 /* =========================================
-   2. MEDIA PARTNERS (DESKTOP)
+   4. MEDIA PARTNERS (DESKTOP)
 ========================================= */
 .media-logo {
     width: 100%;
-    height: 264.57px;
+    max-width: 600px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .media-logo img {
-    height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
@@ -177,22 +174,23 @@ html, body {
     align-items: center;
     width: 100%;
 }
+
 /* =========================================
-   BURBUJA DE GUÍA DE NAVEGACIÓN
+   5. BURBUJA DE GUÍA DE NAVEGACIÓN
 ========================================= */
 .burbuja-guia {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    background-color: rgba(16, 1, 3, 0.05); /* Fondo traslúcido suave */
-    border: 1px solid rgba(16, 1, 3, 0.12);  /* Borde tenue */
+    background-color: rgba(16, 1, 3, 0.05);
+    border: 1px solid rgba(16, 1, 3, 0.12);
     padding: 10px 22px;
-    border-radius: 50px;                    /* Formato de píldora */
+    border-radius: 50px;
     margin-top: 15px;
     
-    /* Hereda la tipografía exacta de tus párrafos <p> */
-    font-family: outfit, sans-serif;
+    /* Inherit de tipografía general */
+    font-family: inherit;
     font-size: 14px;
     color: var(--Negro-Vino, #100103);
     letter-spacing: normal;
@@ -201,17 +199,208 @@ html, body {
     animation: flotarBurbuja 3s ease-in-out infinite;
 }
 
+.burbuja-guia span {
+    font-family: inherit;
+}
+
 .burbuja-guia__separador {
-    color: var(--Fuccsia-intenso, #FF0051); /* Detalle de color fucsia */
+    color: var(--Fuccsia-intenso, #FF0051);
     font-weight: bold;
 }
 
-/* Animación sutil de levitación vertical */
 @keyframes flotarBurbuja {
     0%, 100% {
         transform: translateY(0);
     }
     50% {
         transform: translateY(-6px);
+    }
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN (MEDIA QUERIES)
+========================================= */
+
+/* --- TABLETS Y LAPTOPS PEQUEÑAS (Hasta 1024px) --- */
+@media screen and (max-width: 1024px) {
+    .snacky-logo {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+
+    .media-logo {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+    }
+
+    .branding__solucion-bloque {
+        gap: 60px;
+    }
+
+    .solucion-bloque__imagen {
+        max-width: 380px;
+    }
+}
+
+/* --- TABLETS (Hasta 768px) --- */
+@media screen and (max-width: 768px) {
+    .proyecto-hero {
+        min-height: calc(100vh - 80px);
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .snacky-logo {
+        max-width: 350px;
+    }
+
+    .media-logo {
+        max-width: 300px;
+    }
+
+    .proyecto-branding__intro {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+    /* Solución gráfica: Texto arriba e imagen abajo */
+    .branding__solucion-bloque {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .solucion-bloque__texto {
+        width: 100%;
+    }
+
+    .solucion-bloque__imagen {
+        max-width: 100%;
+        width: 80%;
+    }
+}
+
+/* --- MÓVILES PEQUEÑOS (Hasta 480px) - MANTIENE SCROLL HORIZONTAL --- */
+@media screen and (max-width: 480px) {
+    html, body {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .branding-container {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+    }
+
+    .proyecto-branding {
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto; /* Scroll vertical interno */
+        scroll-snap-align: start;
+        padding-top: 70px;
+    }
+
+    .proyecto-hero {
+        min-height: calc(100vh - 70px);
+        padding: 10px 20px;
+        gap: 12px;
+    }
+
+    /* Reducción estricta de logos con !important para anular alturas previas */
+    .snacky-logo {
+        max-width: 200px !important;
+        height: auto !important;
+    }
+
+    .media-logo {
+        max-width: 150px !important; /* Ajuste específico para Media Partners */
+        height: auto !important;
+    }
+
+    .snacky-logo img,
+    .media-logo img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Tipografía principal del texto intro reducida */
+    .proyecto-branding__intro {
+        font-size: 0.80rem;
+        line-height: 1.35;
+        padding: 0 5px;
+    }
+
+    /* 3 SVGs EN MOBILE: 2 ARRIBA Y 1 ABAJO (GRID) */
+    .branding__svgs-flex {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
+        align-items: center;
+        gap: 12px 24px;
+        width: 100%;
+    }
+
+    /* El 3er SVG se centra en la segunda fila */
+    .branding__svgs-flex .svg-item:nth-child(3) {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
+    /* SVGs pequeños y sutiles */
+    .branding__svgs-flex .svg-item {
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .branding__svgs-flex .svg-item img,
+    .branding__svgs-flex .svg-item svg {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* Solución gráfica ordenada verticalmente y con texto reducido */
+    .branding__solucion-bloque {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .solucion-bloque__texto h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .solucion-bloque__texto p {
+        font-size: 0.82rem;
+        line-height: 1.4;
+    }
+
+    .solucion-bloque__imagen {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* Ajuste de la burbuja guía */
+    .burbuja-guia {
+        font-size: 10px;
+        padding: 6px 12px;
+        gap: 6px;
+    }
+
+    .burbuja-guia__separador {
+        display: inline;
     }
 }
