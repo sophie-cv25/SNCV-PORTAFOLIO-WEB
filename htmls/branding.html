@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Branding | Sophia Carrasco</title>
+
+    <!-- PRECARGA ULTRA RÁPIDA (Inicia la descarga de imágenes antes de renderizar la página) -->
+    <link rel="preload" href="../proyectos/snacky/logo_snackyRecurso 5.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="../proyectos/snacky/gomita2.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="../proyectos/snacky/gomita1.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="../proyectos/snacky/banner snacky.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="../proyectos/media/logo_media.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="../proyectos/media/banner_media (1).svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="../Imagenes/svg/icono_onceRecurso 2.svg" as="image" type="image/svg+xml">
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/branding.css">
-    <script src="../JS/script.js" defer></script>
 </head>
 <body>
+
+    <!-- PANTALLA DE CARGA (Preloader) -->
+    <div id="preloader" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#FCFCFC;z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 0.4s ease, visibility 0.4s ease;">
+        <div style="width:40px;height:40px;border:4px solid rgba(0,0,0,0.1);border-top-color:#FF0051;border-radius:50%;animation:girarPreloader 0.8s linear infinite;"></div>
+        <style>
+            @keyframes girarPreloader { to { transform: rotate(360deg); } }
+            .preloader-oculto { opacity: 0 !important; visibility: hidden !important; }
+        </style>
+    </div>
 
     <!-- NAVBAR BASE -->
     <header class="site-header">
@@ -38,11 +56,11 @@
                 <div class="proyecto-hero">
                     <!-- 1. Logo de Snacky con sus 2 gomitas laterales -->
                     <div class="snacky-logo-container">
-                        <img src="../proyectos/snacky/gomita2.svg" class="snacky-deco-left" alt="Decoración Izquierda">
+                        <img src="../proyectos/snacky/gomita2.svg" class="snacky-deco-left" alt="Decoración Izquierda" fetchpriority="high" decoding="async">
                         <div class="snacky-logo">
-                            <img src="../proyectos/snacky/logo_snackyRecurso 5.svg" alt="Logo Snacky">
+                            <img src="../proyectos/snacky/logo_snackyRecurso 5.svg" alt="Logo Snacky" fetchpriority="high" decoding="async">
                         </div>
-                        <img src="../proyectos/snacky/gomita1.svg" class="snacky-deco-right" alt="Decoración Derecha">
+                        <img src="../proyectos/snacky/gomita1.svg" class="snacky-deco-right" alt="Decoración Derecha" fetchpriority="high" decoding="async">
                     </div>
 
                     <!-- 2. Texto principal -->
@@ -53,13 +71,13 @@
                     <!-- 3. Contenedor de 3 imágenes de adjetivos -->
                     <div class="branding__svgs-flex">
                         <div class="svg-item">
-                            <img src="../proyectos/snacky/amigable.png" alt="Amigable">
+                            <img src="../proyectos/snacky/amigable.png" alt="Amigable" decoding="async">
                         </div>
                         <div class="svg-item">
-                            <img src="../proyectos/snacky/cercana.png" alt="Cercana">
+                            <img src="../proyectos/snacky/cercana.png" alt="Cercana" decoding="async">
                         </div>
                         <div class="svg-item">
-                            <img src="../proyectos/snacky/juegtona.png" alt="Juetona">
+                            <img src="../proyectos/snacky/juegtona.png" alt="Juetona" decoding="async">
                         </div>
                     </div>
 
@@ -82,13 +100,13 @@
                         </p>
                     </div>
                     <div class="solucion-bloque__imagen">
-                        <img src="../proyectos/snacky/solucion_graficaRecurso 3.png" alt="Solución Gráfica Snacky">
+                        <img src="../proyectos/snacky/solucion_graficaRecurso 3.png" alt="Solución Gráfica Snacky" decoding="async">
                     </div>
                 </div>
 
                 <!-- 6. Imagen Ancho Completo -->
                 <div class="branding__imagen-full">
-                    <img src="../proyectos/snacky/banner snacky.svg" alt="Snacky Banner">
+                    <img src="../proyectos/snacky/banner snacky.svg" alt="Snacky Banner" decoding="async">
                 </div>
 
             </div>
@@ -104,7 +122,7 @@
                 <div class="proyecto-hero">
                     <!-- 1. Logo Media Partners -->
                     <div class="media-logo">
-                        <img src="../proyectos/media/logo_media.svg" alt="Logo Media Partners">
+                        <img src="../proyectos/media/logo_media.svg" alt="Logo Media Partners" decoding="async">
                     </div>
 
                     <!-- 2. Texto principal -->
@@ -115,17 +133,18 @@
                     <!-- 3. Contenedor de 3 SVGs de adjetivos -->
                     <div class="branding__svgs-flex">
                         <div class="svg-item">
-                            <img src="../proyectos/media/elegante.svg" alt="Elegante">
+                            <img src="../proyectos/media/elegante.svg" alt="Elegante" decoding="async">
                         </div>
                         <div class="svg-item">
-                            <img src="../proyectos/media/juvenil.svg" alt="Juvenil">
+                            <img src="../proyectos/media/juvenil.svg" alt="Juvenil" decoding="async">
                         </div>
                         <div class="svg-item">
-                            <img src="../proyectos/media/cool.svg" alt="Cool">
+                            <img src="../proyectos/media/cool.svg" alt="Cool" decoding="async">
                         </div>
                     </div>
 
-                 </div>
+                </div>
+
                 <!-- CONTENIDO RESTANTE (SCROLL VERTICAL) -->
 
                 <!-- 5. Bloque Solución Gráfica + Imagen lateral -->
@@ -137,18 +156,74 @@
                         </p>
                     </div>
                     <div class="solucion-bloque__imagen">
-                        <img src="../proyectos/media/media5.svg" alt="Solución Gráfica Media Partners">
+                        <img src="../proyectos/media/media5.svg" alt="Solución Gráfica Media Partners" decoding="async">
                     </div>
                 </div>
 
                 <!-- 6. Imagen Ancho Completo -->
                 <div class="branding__imagen-full">
-                    <img src="../proyectos/media/banner_media (1).svg" alt="Media Partners Banner">
+                    <img src="../proyectos/media/banner_media (1).svg" alt="Media Partners Banner" decoding="async">
                 </div>
 
             </div>
         </section>
 
     </main>
+
+    <!-- SCRIPT DE PRECARGA E INTERCEPTACIÓN DE IMÁGENES -->
+    <script>
+        (function() {
+            const preloader = document.getElementById('preloader');
+            const imagenesHTML = Array.from(document.querySelectorAll('img'));
+            
+            // Fondos SVG definidos en branding.css
+            const imagenesCSS = [
+                '../Imagenes/svg/icono_onceRecurso 2.svg'
+            ];
+
+            let contadorCargadas = 0;
+            const totalRecursos = imagenesHTML.length + imagenesCSS.length;
+
+            function verificarCargaCompleta() {
+                contadorCargadas++;
+                if (contadorCargadas >= totalRecursos) {
+                    finalizarCarga();
+                }
+            }
+
+            function finalizarCarga() {
+                if (preloader) {
+                    preloader.classList.add('preloader-oculto');
+                    setTimeout(() => preloader.remove(), 400);
+                }
+            }
+
+            if (totalRecursos === 0) {
+                finalizarCarga();
+            }
+
+            // 1. Monitoreo de imágenes en HTML <img>
+            imagenesHTML.forEach(img => {
+                if (img.complete && img.naturalWidth !== 0) {
+                    verificarCargaCompleta();
+                } else {
+                    img.addEventListener('load', verificarCargaCompleta, { once: true });
+                    img.addEventListener('error', verificarCargaCompleta, { once: true });
+                }
+            });
+
+            // 2. Precarga forzada de fondos CSS en JavaScript
+            imagenesCSS.forEach(url => {
+                const imgTemp = new Image();
+                imgTemp.onload = verificarCargaCompleta;
+                imgTemp.onerror = verificarCargaCompleta;
+                imgTemp.src = url;
+            });
+
+            // Límite de tiempo de seguridad (Fallback a 3.5s si el internet del cliente es extremadamente lento)
+            setTimeout(finalizarCarga, 3500);
+        })();
+    </script>
+    <script src="../JS/script.js" defer></script>
 </body>
 </html>
