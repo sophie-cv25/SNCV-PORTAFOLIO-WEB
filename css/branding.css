@@ -6,6 +6,12 @@ html, body {
     height: 100vh;
 }
 
+body {
+    background-color: #FCFCFC; /* Color de fondo global solicitado */
+    margin: 0;
+    padding: 0;
+}
+
 .branding-container {
     display: flex;
     width: 100vw;
@@ -21,9 +27,11 @@ html, body {
     width: 100vw;
     height: 100vh;
     overflow-y: auto; /* Scroll vertical interno dentro de cada proyecto */
+    overflow-x: hidden; /* Garantiza corte automático de SVGs que sobresalgan */
     scroll-snap-align: start;
     box-sizing: border-box;
     padding-top: 80px; /* Despeje para el navbar fijo */
+    position: relative;
 }
 
 /* Restricción de ancho para mantener centrado el contenido */
@@ -33,10 +41,54 @@ html, body {
     flex-direction: column;
     align-items: center;
     padding-bottom: 80px;
+    position: relative;
+    z-index: 1; /* Mantiene la legibilidad del contenido sobre los SVG de fondo */
 }
 
+
 /* =========================================
-   2. PANTALLA HERO (PRIMEROS 100VH)
+   2. FONDOS SVG CON OPACIDAD (4%) Y OVERFLOW
+========================================= */
+
+/* SVG de Fondo - Sección Snacky (Lado Derecho) */
+#snacky::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20%; /* Sale ligeramente del borde para ser más grande */
+    transform: translateY(-30%);
+    width: 300%; /* Escalado para hacer la imagen más grande que la sección */
+    height: 300%;
+    background-image: url('../Imagenes/svg/icono_onceRecurso\ 2.svg'); /* REEMPLAZAR POR TU ARCHIVO */
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    opacity: 0.04; /* 4% de opacidad */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* SVG de Fondo - Sección Media Partners (Lado Izquierdo) */
+#media::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10%; /* Sale ligeramente del borde para ser más grande */
+    transform: translateY(-50%);
+    width: 250%; /* Escalado para hacer la imagen más grande que la sección */
+    height: 250%;
+    background-image: url('../Imagenes/svg/icono_onceRecurso\ 2.svg'); /* REEMPLAZAR POR TU ARCHIVO */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    opacity: 0.04; /* 4% de opacidad */
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================
+   3. PANTALLA HERO (PRIMEROS 100VH)
 ========================================= */
 .proyecto-hero {
     width: 100%;
@@ -50,9 +102,20 @@ html, body {
     padding: 20px 40px;
 }
 
+
 /* =========================================
-   3. SNACKY (DESKTOP)
+   4. SNACKY (DESKTOP Y DECORACIONES DE LOGO)
 ========================================= */
+
+/* Contenedor relativo del logo Snacky con sus decoraciones a los lados */
+.snacky-logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
 .snacky-logo {
     width: 686px;
     height: 232.983px;
@@ -65,6 +128,28 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+/* DECORACIÓN IZQUIERDA DEL LOGO */
+.snacky-deco-left {
+    position: absolute;
+    left: -170px; /* Ajusta la distancia horizontal del logo */
+    width: 100px;  /* Ancho del elemento decorativo */
+    height: auto;
+    
+    /* >>> MODIFICA ESTE VALOR PARA MOVER MÁS ARRIBA O MÁS ABAJO <<< */
+    top: 35px;    /* Usa valores negativos (ej: -20px) para SUBIR o positivos (ej: 20px) para BAJAR */
+}
+
+/* DECORACIÓN DERECHA DEL LOGO */
+.snacky-deco-right {
+    position: absolute;
+    right: -112px; /* Ajusta la distancia horizontal del logo */
+    width: 90px;   /* Ancho del elemento decorativo */
+    height: auto;
+    
+    /* >>> MODIFICA ESTE VALOR PARA MOVER MÁS ARRIBA O MÁS ABAJO <<< */
+    top: 0px;     /* Usa valores negativos (ej: -20px) para SUBIR o positivos (ej: 20px) para BAJAR */
 }
 
 .proyecto-branding__intro {
@@ -98,13 +183,13 @@ html, body {
     display: block;
 }
 
-/* Imagen con 15px de padding lateral */
+/* Imagen Ancho Completo / Banner posicionada al final */
 .branding__imagen-full {
     width: 100%;
     padding: 0 15px;
     box-sizing: border-box;
-    margin-top: 40px;
-    margin-bottom: 80px;
+    margin-top: 60px;
+    margin-bottom: 40px;
 }
 
 .branding__imagen-full img {
@@ -123,6 +208,7 @@ html, body {
     width: calc(100% - 30px);
     max-width: 1200px;
     padding: 0 15px;
+    margin-top: 40px;
     box-sizing: border-box;
 }
 
@@ -150,8 +236,9 @@ html, body {
     object-fit: contain;
 }
 
+
 /* =========================================
-   4. MEDIA PARTNERS (DESKTOP)
+   5. MEDIA PARTNERS (DESKTOP)
 ========================================= */
 .media-logo {
     width: 100%;
@@ -175,22 +262,22 @@ html, body {
     width: 100%;
 }
 
+
 /* =========================================
-   5. BURBUJA DE GUÍA DE NAVEGACIÓN
+   6. BURBUJA DE GUÍA DE NAVEGACIÓN
 ========================================= */
 .burbuja-guia {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    background-color: rgba(16, 1, 3, 0.05);
+    background-color: rgba(168, 165, 166, 0.05);
     border: 1px solid rgba(16, 1, 3, 0.12);
     padding: 10px 22px;
     border-radius: 50px;
     margin-top: 15px;
     
-    /* Inherit de tipografía general */
-    font-family: inherit;
+    font-family: chilax, sans-serif;
     font-size: 14px;
     color: var(--Negro-Vino, #100103);
     letter-spacing: normal;
@@ -217,8 +304,9 @@ html, body {
     }
 }
 
+
 /* =========================================
-   6. RESPONSIVE DESIGN (MEDIA QUERIES)
+   7. RESPONSIVE DESIGN (MEDIA QUERIES)
 ========================================= */
 
 /* --- TABLETS Y LAPTOPS PEQUEÑAS (Hasta 1024px) --- */
@@ -254,6 +342,18 @@ html, body {
 
     .snacky-logo {
         max-width: 350px;
+    }
+
+    .snacky-deco-left {
+        left: -75px;
+        width: 56px;
+        top: 30px; /* Ajuste vertical para tablets */
+    }
+
+    .snacky-deco-right {
+        right: -35px;
+        width: 40px;
+        top: 10px; /*
     }
 
     .media-logo {
@@ -318,6 +418,17 @@ html, body {
     .snacky-logo {
         max-width: 200px !important;
         height: auto !important;
+    }
+
+    .snacky-deco-left {
+        left: -65px;
+        width: 45px;
+        top: 20px; /* Ajuste vertical para móviles */
+    }
+
+    .snacky-deco-right {
+        right: -60px;
+        width: 40px;
     }
 
     .media-logo {
@@ -402,5 +513,68 @@ html, body {
 
     .burbuja-guia__separador {
         display: inline;
+    }
+}
+}
+/* =========================================
+   REGLAS ADAPTATIVAS (RESPONSIVE) FONDOS SVG
+========================================= */
+
+/* --- TABLETS Y LAPTOPS PEQUEÑAS (Hasta 1024px) --- */
+@media screen and (max-width: 1024px) {
+    #snacky::after {
+        width: 200%;
+        height: 200%;
+        right: -15%;
+        transform: translateY(-40%);
+    }
+
+    #media::before {
+        width: 180%;
+        height: 180%;
+        left: -15%;
+    }
+}
+
+/* --- TABLETS (Hasta 768px) --- */
+@media screen and (max-width: 768px) {
+    #snacky::after {
+        width: 150%;
+        height: 150%;
+        right: -10%;
+        transform: translateY(-50%);
+        background-position: center right;
+        opacity: 0.03; /* Ligera reducción para no sobrecargar el diseño */
+    }
+
+    #media::before {
+        width: 140%;
+        height: 140%;
+        left: -10%;
+        background-position: center left;
+        opacity: 0.03;
+    }
+}
+
+/* --- MÓVILES (Hasta 480px) --- */
+@media screen and (max-width: 480px) {
+    #snacky::after {
+        width: 120%;
+        height: 120%;
+        right: -5%;
+        top: 50%;
+        transform: translateY(-50%);
+        background-position: center right;
+        opacity: 0.025; /* Transparencia aún más sutil en pantallas chicas */
+    }
+
+    #media::before {
+        width: 110%;
+        height: 110%;
+        left: -5%;
+        top: 50%;
+        transform: translateY(-50%);
+        background-position: center left;
+        opacity: 0.025;
     }
 }
