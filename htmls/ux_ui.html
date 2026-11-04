@@ -51,8 +51,12 @@
     <!-- CONTENEDOR DE SCROLL HORIZONTAL DE PANTALLA COMPLETA -->
     <main class="portfolio-slider">
         
-        <!-- SECCIÓN 1: PROYECTO UKHU -->
+<!-- SECCIÓN 1: PROYECTO UKHU -->
         <section class="proyecto-screen" id="ukhu">
+            
+            <!-- FONDO SVG UKHU -->
+            <img class="ukhu__bg-icon" src="../proyectos/ukhu/ukhu_logonegro.svg" alt="" aria-hidden="true">
+
             <div class="proyecto-screen__content">
                 
                 <div class="proyecto-screen__media">
@@ -84,46 +88,64 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 2: ALASITAS (SOLO DETALLE / PANTALLA COMPLETA) -->
+        <!-- SECCIÓN 2: ALASITAS -->
         <section class="proyecto-screen" id="alasitas">
             
-            <div class="alasitas__seccion-detalle">
-                
-                <!-- Columna Izquierda / Abajo en Responsive: Título + Párrafo -->
-                <div class="alasitas__texto">
-                    <h2>Alasitas</h2>
-                    <p>
-                        Videojuego desarrollado en Unity que recrea la visita del Ekeko a través de distintos minijuegos inspirados en la feria de Alasitas. El proyecto incluyó el diseño de stands, personajes y del universo visual del juego, además de la programación y el desarrollo de una landing page.
-                    </p>
+            <!-- SVGs DE FONDO MARCADOS -->
+            <img class="alasitas__bg-icon alasitas__bg-icon--1" src="../Imagenes/svg/icono_onceRecurso 2.svg" alt="" aria-hidden="true">
+            <img class="alasitas__bg-icon alasitas__bg-icon--2" src="../Imagenes/svg/icono_onceRecurso 2.svg" alt="" aria-hidden="true">
+
+            <div class="alasitas__contenedor-layout">
+
+                <!-- 1. PORTADA A ANCHO COMPLETO -->
+                <div class="alasitas__portada-full">
+                    <img src="../proyectos/alasitas/alasitas_2Recurso 3.svg" alt="Portada Alasitas">
                 </div>
 
-                <!-- Columna Derecha / Arriba en Responsive: Carrusel de imágenes -->
-                <div class="branding__carrusel alasitas__carrusel">
-                    <div class="branding__carrusel-imagenes">
-                        
-                        <!-- Slide 1: Imagen trasladada desde la portada -->
-                        <img src="../proyectos/alasitas/alasitas_2Recurso 3.svg" alt="Portada Alasitas" class="activa">
-
-                        <!-- Slide 2: Dos imágenes apiladas -->
-                        <div class="carrusel__slide-double">
-                            <img src="../proyectos/alasitas/DÍA_PEATÓNRecurso 2.png" alt="Alasitas captura 1">
-                            <img src="../proyectos/alasitas/DÍA_PEATÓNRecurso 3.png" alt="Alasitas captura 2">
-                        </div>
-
-                        <!-- Slide 3: Tercera imagen -->
-                        <img src="../proyectos/alasitas/ekeko.png" alt="Alasitas captura 3">
-
-                        <!-- Slide 4: Cuarta imagen -->
-                        <img src="../proyectos/alasitas/alasitasRecurso 4.svg" alt="Alasitas captura 4">
-
+                <!-- 2. SOLUCIÓN GRÁFICA (TEXTO + IMAGEN AL LADO) -->
+                <div class="alasitas__bloque-solucion">
+                    <div class="alasitas__texto-solucion">
+                        <h2>Alasitas</h2>
+                        <p>
+                            Videojuego desarrollado en Unity que recrea la tradicional visita del Ekeko a través de distintos minijuegos inspirados en la feria de Alasitas.
+                        </p>
+                        <p>
+                            El proyecto abarcó el desarrollo integral de la identidad visual del juego, estableciendo el concepto gráfico, la arquitectura tipográfica, las paletas de color y el estilo para la interfaz de usuario (UI). Además, incluyó el diseño de stands, personajes y el universo visual completo, así como la programación en Unity y el desarrollo de la landing page.
+                        </p>
                     </div>
+                    <div class="alasitas__media-solucion">
+                        <img src="../proyectos/alasitas/alasitas_kit (1).svg" alt="Kit Alasitas UI/UX">
+                    </div>
+                </div>
 
-                    <!-- Indicadores de navegación (4 Puntos) -->
-                    <div class="branding__indicadores">
-                        <span class="branding__punto branding__punto--activo"></span>
-                        <span class="branding__punto"></span>
-                        <span class="branding__punto"></span>
-                        <span class="branding__punto"></span>
+                <!-- 3. IMÁGENES LADO A LADO (EKEKO SPRITE Y PUESTOS) -->
+                <div class="alasitas__bloque-sprites">
+                    <div class="alasitas__sprite-col">
+                        <img src="../proyectos/alasitas/ekeko_sprit (1).svg" alt="Ekeko Sprite Sheet">
+                    </div>
+                    <div class="alasitas__sprite-col">
+                        <img src="../proyectos/alasitas/sprit_puestos (1).svg" alt="Sprites de Puestos">
+                    </div>
+                </div>
+
+                <!-- TEXTO EXPLICATIVO ALINEADO A LA IZQUIERDA -->
+                <p class="alasitas__descripcion-sprites">
+                    Hoja de Sprites (Sprite Sheet) y Poses Clave (Keyframes) Desglose de las poses clave de animación para los estados de movimiento e interacción del Ekeko dentro del universo de Alasitas y sprites de puestos
+                </p>
+
+                <!-- 4. CUADRÍCULA 2x2 (GAP 10PX) -->
+                <div class="alasitas__grid-2x2">
+                    <div class="alasitas__grid-item">
+                        <img src="../proyectos/alasitas/alasitas_uiRecurso 7.png" alt="Captura Alasitas 1">
+                    </div>
+                    <div class="alasitas__grid-item">
+                        <img src="../proyectos/alasitas/alasitas_uiRecurso 3.svg" alt="Captura Alasitas 2">
+                    </div>
+                    <div class="alasitas__grid-item">
+                        <img src="../proyectos/alasitas/alasitas_uiRecurso 4.svg" alt="Captura Alasitas 3">
+                    </div>
+                    <div class="alasitas__grid-item">
+                        <img src="../proyectos/alasitas/alasitas_uiRecurso 5.svg" alt="Captura Alasitas 4">
                     </div>
                 </div>
 
