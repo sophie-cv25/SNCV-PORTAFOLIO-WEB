@@ -1,7 +1,7 @@
 /* ========================================
    1. IMPORTACIONES Y VARIABLES DE COLORES
 ======================================== */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@1,600&family=Outfit:wght@300;400;500;600&display=swap');
 
 :root {
     --Negro-Vino: #100103;
@@ -37,16 +37,16 @@ section {
     box-sizing: border-box;
 }
 
-/* ICONO DE FONDO */
+/* ICONO DE FONDO EN EL HERO */
 .background-icon {
     position: absolute;
     top: -400px;
     left: 200px;
     width: 1488px;
     height: 1488px;
-    opacity: 0.5;
+    opacity: 0.8;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
     contain: layout paint;
 }
 
@@ -58,18 +58,7 @@ section {
     object-position: right top;
 }
 
-/* TIPOGRAFÍAS ESCALABLES (RESPONSIVE) */
-h1 {
-    color: var(--Negro-Vino, #100103);
-    font-family: "Chillax", sans-serif;
-    font-size: clamp(60px, 12vw, 171px);
-    font-weight: 500;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    padding-left: 60px;
-    margin: 0;
-}
-
+/* TIPOGRAFÍAS BASE */
 h2 {
     color: var(--Negro-Vino, #100103);
     font-family: "Chillax", sans-serif;
@@ -107,16 +96,17 @@ p {
 }
 
 /* ========================================
-   3. NAVBAR
+   3. NAVBAR (Color Hueso en Hero / Negro Vino dinámico)
 ======================================== */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0 60px; /* Padding equilibrado para escritorio */
+    padding: 0 60px;
     box-sizing: border-box;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
 .navbar {
@@ -126,36 +116,11 @@ p {
     width: 100%;
     min-height: 80px;
 }
-.navbar__brand {
-    color: var(--Negro-Vino, #100103);
-    font-family: "Chillax", sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.6;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: color 0.3s ease;
-}
 
-.navbar__brand:hover {
-    color: var(--Fuccsia-intenso, #FF0051);
-}
-
-.navbar__menu {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 47px;
-    flex-shrink: 0;
-    color: var(--Negro-Vino, #100103);
-    font-family: "Chillax", sans-serif;
-    list-style: none; /* Elimina los puntos/viñetas de la lista */
-    margin: 0;        /* Elimina margenes por defecto del ul */
-
-}
-
+/* Colores base para la sección Hero (Fondo Oscuro) */
+.navbar__brand,
 .navbar__link {
-    color: var(--Negro-Vino, #100103);
+    color: var(--Hueso, #D9D9D9);
     font-family: "Chillax", sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -164,13 +129,27 @@ p {
     transition: color 0.3s ease;
 }
 
-.navbar__link:hover,
-.navbar__link.activo {
-    color: var(--Fuccsia-intenso, #FF0051);
+.navbar__brand {
+    font-size: 15px;
+    line-height: 1.6;
 }
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 47px;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__link:hover,
 .navbar__brand:hover,
+.navbar__link.activo,
 .navbar__brand.activo {
-    color: var(--Fuccsia-intenso, #FF0051);
+    color: var(--Fuccsia-intenso, #FF0051) !important;
 }
 
 .navbar__settings {
@@ -183,6 +162,8 @@ p {
     border: none;
     background: transparent;
     cursor: pointer;
+    filter: invert(1); /* Blanco en la sección Hero */
+    transition: filter 0.3s ease;
 }
 
 .navbar__settings img {
@@ -192,33 +173,84 @@ p {
     object-fit: contain;
 }
 
+/* --- CLASE DINÁMICA: APLICA NEGRO VINO FUERA DEL HERO --- */
+.site-header.navbar--oscuro .navbar__brand,
+.site-header.navbar--oscuro .navbar__link {
+    color: var(--Negro-Vino, #100103);
+}
+
+.site-header.navbar--oscuro .navbar__settings {
+    filter: none; /* Vuelve a su color normal sobre fondos claros */
+}
+
+/* REGLAS PARA NAVBAR EN COLOR NEGRO VINO (Subpáginas y secciones claras) */
+.site-header.navbar--oscuro .navbar__brand,
+.site-header.navbar--oscuro .navbar__link {
+    color: var(--Negro-Vino, #100103) !important;
+}
+
+.site-header.navbar--oscuro .navbar__settings {
+    filter: none !important; /* Mantiene el botón de ajustes en su color oscuro normal */
+}
 /* ========================================
-   4. HERO
+   4. SECCIÓN HERO REDISEÑADA
 ======================================== */
 .hero {
     min-height: 100vh;
+    width: 100vw;
+    background-color: var(--Negro-Vino, #100103);
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 10%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 60px;
+    gap: 26px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero__title {
-    display: flex;
-    flex-direction: column;
+    color: var(--Hueso, #D9D9D9);
+    font-family: 'Cascadia Code', 'Cascadia Mono', monospace;
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(60px, 11vw, 171px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0;
+    padding: 0;
 }
 
-.hero__name {
-    display: block;
+.hero__subtitle {
+    color: var(--Hueso, #D9D9D9);
+    font-family: "Chillax", sans-serif;
+    font-size: clamp(18px, 2.5vw, 36px);
+    
+    /* >>> CAMBIA AQUÍ EL PESO DE "SOPHIA CARRASCO | DISEÑADORA DIGITAL" <<< */
+    font-weight: 400; /* Puedes probar con: 300 (Light), 400 (Regular), 500 (Medium), 600 (SemiBold) */
+    
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 0;
 }
 
+/* >>> UBICACIÓN DEL ÍCONO DE LA ESQUINA <<< */
 .hero__icon {
-    padding-right: 40px;
-    padding-bottom: 40px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 1001;
+    position: absolute;
+    
+    /* >>> MODIFICA ESTOS VALORES PARA MOVER EL ÍCONO <<< */
+    bottom: 30px; /* Incrementa para SUBIRLO (ej: 40px) o disminuye/usa negativos para BAJARLO */
+    right: 60px;  /* Modifica la distancia desde el borde derecho */
+    
+    z-index: 2;
     pointer-events: none;
 }
 
@@ -227,6 +259,70 @@ p {
     height: 50px;
     width: auto;
     object-fit: contain;
+    filter: invert(1);
+}
+
+/* ========================================
+   4. SECCIÓN HERO REDISEÑADA
+======================================== */
+.hero {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--Negro-Vino, #100103); /* Fondo Negro Vino */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 60px;
+    gap: 26px; /* Espaciado entre elementos */
+    position: relative;
+    z-index: 1;
+}
+
+.hero__title {
+    color: var(--Hueso, #D9D9D9);
+    font-family: 'Cascadia Code', 'Cascadia Mono', monospace;
+    font-weight: 600;
+    font-style: italic; /* Semi Bold Italic */
+    font-size: clamp(60px, 11vw, 171px); /* Escalable con límite en 171px */
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0;
+    padding: 0;
+}
+
+.hero__subtitle {
+    color: var(--Hueso, #D9D9D9);
+    font-family: "Chillax", sans-serif;
+    font-size: clamp(18px, 2.5vw, 36px); /* Escalable con límite en 36px */
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+/* ICONO DE ESQUINA CON INVERSIÓN DE COLOR (BLANCO) */
+.hero__icon {
+    position: absolute;
+    bottom: -120px;
+    right: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero__icon img {
+    display: block;
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: invert(1); /* Inversión de color de negro a blanco */
 }
 
 /* ========================================
@@ -386,7 +482,6 @@ p {
     text-align: center;
 }
 
-/* GRID DE ICONOS */
 .sobre-mi__grid-iconos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -491,7 +586,6 @@ p {
     opacity: 0.8;
 }
 
-/* FORMULARIO COMPACTO */
 .footer__formulario {
     flex: 1;
     max-width: 550px;
@@ -570,13 +664,17 @@ p {
 }
 
 /* =========================================
-   8. ADAPTATIVO / RESPONSIVE OPTIMIZADO
+   8. ADAPTATIVO / RESPONSIVE (MOBILE & TABLET)
 ========================================= */
 
-/* TABLETS Y PANTALLAS MEDIANAS (Hasta 1024px) */
+/* TABLETS (Hasta 1024px) */
 @media screen and (max-width: 1024px) {
     .site-header {
         padding: 0 30px;
+    }
+
+    .hero__content {
+        padding-left: 30px;
     }
 
     .trabajos h2 {
@@ -597,7 +695,7 @@ p {
     }
 }
 
-/* CELULARES Y TABLETS PEQUEÑAS (Hasta 768px) */
+/* ADAPTATIVO MÓVIL (Hasta 768px) */
 @media screen and (max-width: 768px) {
     
     section,
@@ -610,13 +708,13 @@ p {
         padding-bottom: 50px;
     }
 
-.site-header {
+    .site-header {
         padding: 0 15px;
     }
 
     .navbar {
         min-height: 60px;
-        flex-direction: column; /* Apila o centra los elementos en cel */
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 8px;
@@ -646,54 +744,45 @@ p {
         height: 16px;
     }
 
-    /* HERO CENTRADO CON TÍTULO MÁS GRANDE EN 2 LÍNEAS */
+    /* ADAPTATIVO HERO: CENTRADO TOTAL + ICONO ARRIBA DE PORTAFOLIO */
     .hero {
         min-height: 100vh !important;
-        display: flex;
-        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        padding: 80px 20px 20px;
+    }
+
+    .hero__content {
+        padding-left: 0;
         align-items: center;
         text-align: center;
-        gap: 20px;
-        padding-top: 60px;
-        padding-bottom: 20px;
-        box-sizing: border-box;
-    }
-
-    h1 {
-        padding-left: 0 !important;
-        margin: 0 !important;
-        text-align: center !important;
-        font-size: clamp(54px, 14vw, 90px);
-        line-height: 0.95;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero__name {
-        display: block;
-    }
-    /* ICONO DE FONDO EN RESPONSIVE */
-    .background-icon {
-        margin-left: -300px; /* Desplaza el icono 300px hacia la izquierda */
-    }
-
-    .hero__icon {
-        padding-right: 0 !important;
-        padding-bottom: 0 !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        gap: 16px;
         width: 100%;
-        pointer-events: none;
+    }
 
+    .hero__title {
+        font-size: clamp(38px, 12vw, 75px);
+        text-align: center;
+    }
+
+    .hero__subtitle {
+        font-size: clamp(14px, 4.5vw, 20px);
+        text-align: center;
+    }
+
+    /* Reubicación del icono por encima de PORTAFOLIO en mobile */
+    .hero__icon {
+        position: static; /* Cambia a posición estática dentro del contenedor */
+        margin-bottom: 8px;
     }
 
     .hero__icon img {
-        height: 60px;
+        height: 45px;
         width: auto;
-        object-fit: contain;
+    }
+
+    .background-icon {
+        margin-left: -300px;
     }
 
     h2, h3, h4, p,
@@ -751,7 +840,6 @@ p {
         opacity: 0.5;
     }
 
-    /* GRID RESPONSIVE PARA ÍCONOS DE SOBRE MÍ */
     .seccion-sobre-mi {
         padding: 80px 20px 40px;
     }
@@ -781,7 +869,6 @@ p {
         height: 40px;
     }
 
-    /* FOOTER RESPONSIVE */
     .site-footer {
         padding: 60px 20px 40px;
     }
