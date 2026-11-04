@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,27 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Proyectos de diseño 3D de mi portafolio.">
+    <meta name="theme-color" id="theme-color-meta" content="#100103">
 
     <title>Diseño 3D | Portafolio</title>
 
+    <!-- PRECARGA DE LIBRERÍA 3D PARA DISPARAR RENDIMIENTO -->
+    <link rel="preload" href="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js" as="script">
+    
+    <!-- ESTILOS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/3d.css">
 
-    <script type="module"
-        src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js">
-    </script>
+    <!-- SCRIPTS CON DEFER PARA NO BLOQUEAR RENDERIZADO -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
     <script src="../JS/3d.js" defer></script>
     <script src="../JS/script.js" defer></script>
+</head>
 
 <body>
-<!-- NAVBAR -->
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="preloader">
+        <div class="preloader__content">
+            <div class="preloader__svg-container">
+                <img class="preloader__icon active" src="../Imagenes/svg/icono_onceRecurso 1.svg" alt="Cargando...">
+                <img class="preloader__icon" src="../Imagenes/svg/icono_onceRecurso 2.svg" alt="Cargando...">
+                <img class="preloader__icon" src="../Imagenes/svg/icono_onceRecurso 3.svg" alt="Cargando...">
+                <img class="preloader__icon" src="../Imagenes/svg/icono_onceRecurso 4.svg" alt="Cargando...">
+            </div>
+            <p class="preloader__text">CARGANDO...</p>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
     <header class="site-header">
         <nav class="navbar" aria-label="Navegación principal">
             
-            <!-- MARCA / LOGO (Izquierda en Desktop) -->
             <a class="navbar__brand" href="../index.html#inicio">INICIO</a>
 
-            <!-- MENÚ DE ENLACES (Derecha en Desktop) -->
             <ul class="navbar__menu">
                 <li>
                     <a class="navbar__link" href="../index.html#sobre-mi">SOBRE MÍ</a>
@@ -54,156 +70,61 @@
 
         <section class="diseno3d__proyectos">
 
-
-           <!-- =========================
-     PROYECTO KERA (CORREGIDO)
-========================== -->
-<article class="diseno3d__proyecto diseno3d__proyecto--kera" id="kera">
-
-    <div class="diseno3d__info">
-        <h2 class="diseno3d__titulo">KERA</h2>
-        <p class="diseno3d__descripcion">
-            Desarrollo de personaje desde su conceptualización y diseño,
-            incluyendo ilustraciones base de distintas poses, modelado 3D
-            y creación de una microanimación con estética 2D.
-        </p>
-    </div>
-
-    <!-- GALERÍA KERA -->
-    <div class="diseno3d__visual">
-
-        <div class="diseno3d__galeria" id="galeria-kera">
-            <!-- CONTENIDO 1: MODELO 3D -->
-            <div class="diseno3d__slide diseno3d__slide--activo">
-                <model-viewer
-                    src="../proyectos/kera/kera.glb"
-                    alt="Modelo 3D del proyecto Kera"
-                    camera-controls
-                    auto-rotate
-                    rotation-per-second="20deg"
-                    loading="lazy"
-                    interaction-prompt="none"
-                    shadow-intensity="1">
-                </model-viewer>
-            </div>
-
-            <!-- CONTENIDO 2: IMAGEN -->
-            <div class="diseno3d__slide">
-                <img src="../proyectos/kera/concept art 3.png" alt="Imagen del proyecto Kera" loading="lazy">
-            </div>
-
-            <!-- CONTENIDO 3: IMAGEN -->
-            <div class="diseno3d__slide">
-                <img src="../proyectos/kera/keracolash.svg" alt="Otra imagen del proyecto Kera" loading="lazy">
-            </div>
-
-            <!-- CONTENIDO 4: VIDEO -->
-            <div class="diseno3d__slide">
-                <video controls playsinline preload="metadata">
-                    <source src="../proyectos/kera/Animacion2.5D-sophia-Carrasco-2T.mp4" type="video/mp4">
-                    Tu navegador no puede reproducir este video.
-                </video>
-            </div>
-        </div>
-
-        <!-- CONTROLES KERA CON SU CONTENEDOR CONTROLES -->
-        <div class="diseno3d__controles">
-            <button class="diseno3d__flecha diseno3d__flecha--anterior" type="button" aria-label="Contenido anterior">
-                <img src="../Imagenes/FLECHAS/Arrow 6.svg" alt="" aria-hidden="true">
-            </button>
-
-            <div class="diseno3d__indicadores">
-                <span class="diseno3d__punto diseno3d__punto--activo"></span>
-                <span class="diseno3d__punto"></span>
-                <span class="diseno3d__punto"></span>
-                <span class="diseno3d__punto"></span>
-            </div>
-
-            <button class="diseno3d__flecha diseno3d__flecha--siguiente" type="button" aria-label="Siguiente contenido">
-                <img src="../Imagenes/FLECHAS/Arrow 5.svg" alt="" aria-hidden="true">
-            </button>
-        </div>
-
-    </div>
-
-</article>
-
             <!-- =========================
-                 PROYECTO CHAMP
+                 PROYECTO KERA
             ========================== -->
+            <article class="diseno3d__proyecto diseno3d__proyecto--kera" id="kera">
 
-            <article
-                class="diseno3d__proyecto diseno3d__proyecto--champ"
-                id="champ">
+                <div class="diseno3d__info">
+                    <h2 class="diseno3d__titulo">KERA</h2>
+                    <p class="diseno3d__descripcion">
+                        Desarrollo de personaje desde su conceptualización y diseño,
+                        incluyendo ilustraciones base de distintas poses, modelado 3D
+                        y creación de una microanimación con estética 2D.
+                    </p>
+                </div>
 
-
-                <!-- GALERÍA CHAMP -->
-
+                <!-- GALERÍA KERA -->
                 <div class="diseno3d__visual">
 
-                    <div class="diseno3d__galeria" id="galeria-champ">
-
-                        <!-- CONTENIDO 1: MODELO 3D -->
+                    <div class="diseno3d__galeria" id="galeria-kera">
+                        <!-- CONTENIDO 1: MODELO 3D (Carga prioritaria EAGER) -->
                         <div class="diseno3d__slide diseno3d__slide--activo">
-
                             <model-viewer
-                                src="../proyectos/champ/champ.glb"
-                                alt="Modelo 3D del proyecto Champ"
+                                src="../proyectos/kera/kera.glb"
+                                alt="Modelo 3D del proyecto Kera"
                                 camera-controls
                                 auto-rotate
                                 rotation-per-second="20deg"
-                                loading="lazy"
+                                loading="eager"
+                                fetchpriority="high"
                                 interaction-prompt="none"
                                 shadow-intensity="1">
                             </model-viewer>
-
                         </div>
-
 
                         <!-- CONTENIDO 2: IMAGEN -->
                         <div class="diseno3d__slide">
-
-                            <img
-                                src="../proyectos/champ/Carrasco_Sophia_Gato_01.png"
-                                alt="Imagen del proyecto Champ"
-                                loading="lazy">
-
+                            <img src="../proyectos/kera/concept art 3.png" alt="Imagen del proyecto Kera" loading="lazy" decoding="async">
                         </div>
-
 
                         <!-- CONTENIDO 3: IMAGEN -->
                         <div class="diseno3d__slide">
-
-                            <img
-                                src="..//proyectos/champ/Carrasco_Sophia_Gato_02.png"
-                                alt="Otra imagen del proyecto Champ"
-                                loading="lazy">
-
+                            <img src="../proyectos/kera/keracolash.svg" alt="Otra imagen del proyecto Kera" loading="lazy" decoding="async">
                         </div>
 
-
-                        <!-- CONTENIDO 4: IMAGEN -->
+                        <!-- CONTENIDO 4: VIDEO -->
                         <div class="diseno3d__slide">
-
-                            <img
-                                src="../proyectos/champ/Carrasco_Sophia_Gato03 .png"
-                                alt="Otra imagen del proyecto Champ"
-                                loading="lazy">
-
+                            <video controls playsinline preload="none">
+                                <source src="../proyectos/kera/Animacion2.5D-sophia-Carrasco-2T.mp4" type="video/mp4">
+                                Tu navegador no puede reproducir este video.
+                            </video>
                         </div>
-
                     </div>
 
-
-                    <!-- CONTROLES CHAMP -->
-
+                    <!-- CONTROLES KERA -->
                     <div class="diseno3d__controles">
-
-
-                        <button
-                            class="diseno3d__flecha diseno3d__flecha--anterior"
-                            type="button"
-                            aria-label="Contenido anterior">
+                        <button class="diseno3d__flecha diseno3d__flecha--anterior" type="button" aria-label="Contenido anterior">
                             <img src="../Imagenes/FLECHAS/Arrow 6.svg" alt="" aria-hidden="true">
                         </button>
 
@@ -214,22 +135,79 @@
                             <span class="diseno3d__punto"></span>
                         </div>
 
-                        <button
-                            class="diseno3d__flecha diseno3d__flecha--siguiente"
-                            type="button"
-                            aria-label="Siguiente contenido">
+                        <button class="diseno3d__flecha diseno3d__flecha--siguiente" type="button" aria-label="Siguiente contenido">
                             <img src="../Imagenes/FLECHAS/Arrow 5.svg" alt="" aria-hidden="true">
                         </button>
-
                     </div>
 
                 </div>
 
+            </article>
+
+            <!-- =========================
+                 PROYECTO CHAMP
+            ========================== -->
+            <article class="diseno3d__proyecto diseno3d__proyecto--champ" id="champ">
+
+                <!-- GALERÍA CHAMP -->
+                <div class="diseno3d__visual">
+
+                    <div class="diseno3d__galeria" id="galeria-champ">
+
+                        <!-- CONTENIDO 1: MODELO 3D (Carga prioritaria EAGER) -->
+                        <div class="diseno3d__slide diseno3d__slide--activo">
+                            <model-viewer
+                                src="../proyectos/champ/champ.glb"
+                                alt="Modelo 3D del proyecto Champ"
+                                camera-controls
+                                auto-rotate
+                                rotation-per-second="20deg"
+                                loading="eager"
+                                fetchpriority="high"
+                                interaction-prompt="none"
+                                shadow-intensity="1">
+                            </model-viewer>
+                        </div>
+
+                        <!-- CONTENIDO 2: IMAGEN -->
+                        <div class="diseno3d__slide">
+                            <img src="../proyectos/champ/Carrasco_Sophia_Gato_01.png" alt="Imagen del proyecto Champ" loading="lazy" decoding="async">
+                        </div>
+
+                        <!-- CONTENIDO 3: IMAGEN (Ruta corregida) -->
+                        <div class="diseno3d__slide">
+                            <img src="../proyectos/champ/Carrasco_Sophia_Gato_02.png" alt="Otra imagen del proyecto Champ" loading="lazy" decoding="async">
+                        </div>
+
+                        <!-- CONTENIDO 4: IMAGEN -->
+                        <div class="diseno3d__slide">
+                            <img src="../proyectos/champ/Carrasco_Sophia_Gato03 .png" alt="Otra imagen del proyecto Champ" loading="lazy" decoding="async">
+                        </div>
+
+                    </div>
+
+                    <!-- CONTROLES CHAMP -->
+                    <div class="diseno3d__controles">
+                        <button class="diseno3d__flecha diseno3d__flecha--anterior" type="button" aria-label="Contenido anterior">
+                            <img src="../Imagenes/FLECHAS/Arrow 6.svg" alt="" aria-hidden="true">
+                        </button>
+
+                        <div class="diseno3d__indicadores">
+                            <span class="diseno3d__punto diseno3d__punto--activo"></span>
+                            <span class="diseno3d__punto"></span>
+                            <span class="diseno3d__punto"></span>
+                            <span class="diseno3d__punto"></span>
+                        </div>
+
+                        <button class="diseno3d__flecha diseno3d__flecha--siguiente" type="button" aria-label="Siguiente contenido">
+                            <img src="../Imagenes/FLECHAS/Arrow 5.svg" alt="" aria-hidden="true">
+                        </button>
+                    </div>
+
+                </div>
 
                 <div class="diseno3d__info">
-
                     <h2 class="diseno3d__titulo">CHAMP</h2>
-
                     <p class="diseno3d__descripcion">
                         Proyecto de diseño y personalización de un personaje 3D
                         mediante la creación de capas gráficas en Photoshop,
@@ -237,7 +215,6 @@
                         Incluyó el modelado tridimensional de algunas partes del
                         personaje utilizando Blender.
                     </p>
-
                 </div>
 
             </article>
@@ -246,13 +223,10 @@
 
     </main>
 
-
     <!-- BURBUJA DE AYUDA -->
-
     <div class="diseno3d__ayuda" id="ayuda3d">
         Puedes hacer zoom y mover los modelos 3D con el cursor.
     </div>
-
 
 </body>
 </html>

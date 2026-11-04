@@ -8,7 +8,7 @@
         name="description"
         content="Portafolio personal de Sophia Carrasco."
     >
-    <meta name="theme-color" content="#100103">
+    <meta name="theme-color" id="theme-color-meta" content="#100103">
 
     <title>Sophia Carrasco | Portafolio</title>
 
@@ -21,6 +21,21 @@
     <script src="JS/script.js" defer></script>
 </head>
 <body>
+    <div id="preloader" class="preloader">
+    <div class="preloader__content">
+        <div class="preloader__svg-container">
+            <!-- 1. Isotipo principal -->
+            <img class="preloader__icon active" src="Imagenes/svg/icono_onceRecurso 1.svg" alt="Cargando...">
+            <!-- 2. Ícono 11 -->
+            <img class="preloader__icon" src="Imagenes/svg/icono_onceRecurso 2.svg" alt="Cargando...">
+            <!-- 3. Ícono repetitivo -->
+            <img class="preloader__icon" src="Imagenes/svg/icono_onceRecurso 3.svg" alt="Cargando...">
+            <!-- 4. Herramienta / Ícono extra (puedes cambiarlo por cualquier otro SVG) -->
+            <img class="preloader__icon" src="Imagenes/svg/icono_onceRecurso 4.svg" alt="Cargando...">
+        </div>
+        <p class="preloader__text">CARGANDO...</p>
+    </div>
+</div>
 
     <!-- NAVBAR -->
     <header class="site-header">
